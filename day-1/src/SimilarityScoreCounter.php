@@ -21,20 +21,7 @@ class SimilarityScoreCounter
 
         $similarityScore = 0;
         foreach ($locationsIdsGroupd1 as $locationId1) {
-            echo '$locationId1' . PHP_EOL;
-            var_dump($locationId1);
-            echo '$this->getCountOfRepeats($locationId1)' . PHP_EOL;
-            var_dump($this->getCountOfRepeats($locationId1));
-            echo '($locationId1 * $this->getCountOfRepeats($locationId1))' . PHP_EOL;
-            var_dump($locationId1 * $this->getCountOfRepeats($locationId1));
             $similarityScore += ($locationId1 * $this->getCountOfRepeats($locationId1));
-
-            echo '$similarityScore' . PHP_EOL;
-            var_dump($similarityScore);
-
-            if ($similarityScore > 1000) {
-                break;
-            }
         }
 
         return $similarityScore;
