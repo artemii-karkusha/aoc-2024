@@ -1,0 +1,17 @@
+{
+    "name": "advent/day-1",
+    "autoload": {
+        "psr-4": {
+            "Advent\\Day1\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Artemii Karkusha",
+            "email": "artemii.karkusha@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/filesystem": "^7.2"
+    }
+}
