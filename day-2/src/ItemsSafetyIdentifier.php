@@ -15,35 +15,67 @@ class ItemsSafetyIdentifier
 
     private const VALUES_ORDER_TYPE_DECSREASED = 'decreased';
 
+    private array $lastUnsafeItemKeys = [];
+
+    /**
+     * @param ValuesDiffCalculator $diffCalculator
+     */
     public function __construct(
         readonly private ValuesDiffCalculator $diffCalculator
     ) {
     }
 
     /**
-     * @param int[] $items
-     * @return array
+     * @param array $items
+     * @return bool
      */
     public function areItemsSafe(array $items): bool
     {
         $countOfItems = count($items);
 
         $orderType = '';
-        for ($i = 0; $i < $countOfItems-1; $i++) {
-            if (!$this->isDiffSafe((int)$items[$i], (int)$items[$i+1])) {
+        for ($iteration = 0; $iteration < $countOfItems - 1; $iteration++) {
+            if (!$this->isDiffSafe((int)$items[$iteration], (int)$items[$iteration + 1])) {
+                $this->setLastUnsafeItemKeys($countOfItems, $iteration);
                 return false;
             }
 
-            if ($i === 0) {
-                $orderType = $this->getOrderType((int)$items[$i], (int)$items[$i+1]);
+            if ($iteration === 0) {
+                $orderType = $this->getOrderType((int)$items[$iteration], (int)$items[$iteration + 1]);
             }
 
-            if (!$this->isValuesOrderConsistent($orderType, (int)$items[$i], (int)$items[$i+1])) {
+            if (!$this->isValuesOrderConsistent($orderType, (int)$items[$iteration], (int)$items[$iteration + 1])) {
+                $this->setLastUnsafeItemKeys($countOfItems, $iteration);
                 return false;
             }
         }
 
         return true;
+    }
+
+    /**
+     * @return int[]
+     */
+    public function getLastUnsafeItemKeys(): array
+    {
+        return $this->lastUnsafeItemKeys;
+    }
+
+    /**
+     * @param $countOfItems
+     * @param $currentKey
+     * @return void
+     */
+    private function setLastUnsafeItemKeys($countOfItems, $currentKey): void
+    {
+        $this->lastUnsafeItemKeys =
+            ($currentKey === ($countOfItems - 2))
+                ? [$currentKey + 1]
+                : [$currentKey, $currentKey + 1];
+
+        if ($currentKey === 1) {
+            $this->lastUnsafeItemKeys[] = 0;
+        }
     }
 
     /**
@@ -104,14 +136,17 @@ class ItemsSafetyIdentifier
     private function isValuesOrderConsistent(string $orderType, int $value1, int $value2): bool
     {
         switch ($orderType) {
-            case self::VALUES_ORDER_TYPE_INCREASED:{
+            case self::VALUES_ORDER_TYPE_INCREASED:
+            {
                 return $this->areItemsIncreased($value1, $value2);
             }
-            case self::VALUES_ORDER_TYPE_DECSREASED:{
+            case self::VALUES_ORDER_TYPE_DECSREASED:
+            {
                 return $this->areItemsDecreased($value1, $value2);
             }
         }
 
         return false;
     }
+
 }
