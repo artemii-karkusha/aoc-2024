@@ -12,6 +12,7 @@
         }
     ],
     "require": {
-        "symfony/filesystem": "^7.2"
+        "symfony/filesystem": "^7.2",
+        "php": "^8.3"
     }
 }
