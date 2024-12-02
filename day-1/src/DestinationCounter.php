@@ -4,13 +4,16 @@ declare(strict_types=1);
 
 namespace Advent\Day1;
 
+use ArtemiiKarkusha\Aoc2024\ValuesDiffCalculator;
+
 class DestinationCounter
 {
     /**
      * @param ArraySorterInterface $arraySorter
      */
     public function __construct(
-        private readonly ArraySorterInterface $arraySorter
+        private readonly ArraySorterInterface $arraySorter,
+        private readonly ValuesDiffCalculator $valuesDiffCalculator
     ) {
     }
 
@@ -26,19 +29,9 @@ class DestinationCounter
         $countOfLocations = count($locationsIdsGroupd1);
         $destinationDifference = 0;
         for ($i = 0; $i < $countOfLocations; $i++) {
-            $destinationDifference+= $this->calculateDiffBetweenValues($sortedLocationsIdsGroupd1[$i], $sortedLocationsIdsGroupd2[$i]);
+            $destinationDifference+= $this->valuesDiffCalculator->calculateDiffBetweenValues($sortedLocationsIdsGroupd1[$i], $sortedLocationsIdsGroupd2[$i]);
         }
 
         return $destinationDifference;
-    }
-
-    /**
-     * @param int $value1
-     * @param int $value2
-     * @return int
-     */
-    private function calculateDiffBetweenValues(int $value1, int $value2): int
-    {
-        return abs($value1 - $value2);
     }
 }

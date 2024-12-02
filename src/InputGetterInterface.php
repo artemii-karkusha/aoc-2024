@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Advent\Day1;
+namespace ArtemiiKarkusha\Aoc2024;
 
 interface InputGetterInterface
 {

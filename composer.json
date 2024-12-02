@@ -1,8 +1,10 @@
 {
-    "name": "advent/day-1",
+    "name": "artemii.karkusha/aoc-2024",
+    "type": "project",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Advent\\Day1\\": "src/"
+            "ArtemiiKarkusha\\Aoc2024\\": "src/"
         }
     },
     "authors": [
@@ -12,6 +14,7 @@
         }
     ],
     "require": {
-        "php": "^8.3"
+        "php": "^8.3",
+        "symfony/filesystem": "^7.2"
     }
 }

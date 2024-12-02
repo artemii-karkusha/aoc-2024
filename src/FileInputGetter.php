@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace Advent\Day1;
+namespace ArtemiiKarkusha\Aoc2024;
 
-use JetBrains\PhpStorm\Pure;
 use Symfony\Component\Filesystem\Filesystem;
 
 class FileInputGetter implements InputGetterInterface
@@ -14,7 +13,7 @@ class FileInputGetter implements InputGetterInterface
      */
     private Filesystem $filesystem;
 
-    public function __construct()
+    public function __construct(private readonly string $filePath)
     {
         $this->filesystem = new Filesystem();
     }
@@ -24,6 +23,6 @@ class FileInputGetter implements InputGetterInterface
      */
     public function getInputData(): string
     {
-        return $this->filesystem->readFile(dirname(__DIR__).'/data/historiansInput.txt');
+        return $this->filesystem->readFile($this->filePath);
     }
 }
