@@ -15,6 +15,7 @@ use function sprintf;
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 require_once dirname(__DIR__) . '/../vendor/autoload.php';
 
+$startTime = hrtime(true);
 $inputDataLinesExtractor = new InputDataLinesExtractor(
     new FileInputGetter(dirname(__DIR__) . '/data/input-data.txt')
 );
@@ -26,9 +27,8 @@ $reportsSafetyValidator = new ReportsSafetyValidator($itemsSafetyIdentifier);
 
 
 // Main functionality
-$startTime = hrtime(true);
 $countSafeReports = 0;
-$countSafeReportsWithRemovedOneUnsafeItem = 0;
+$countSafeReportsWithRemovedOneUnsafeLevel = 0;
 
 foreach ($reportsExtractor->getItems() as $reportLevels) {
     if ($reportsSafetyValidator->isReportSafe($reportLevels)) {
@@ -37,7 +37,7 @@ foreach ($reportsExtractor->getItems() as $reportLevels) {
     }
 
     if ($reportsSafetyValidator->isReportSafeWithoutOneUnsafeLevel($reportLevels)) {
-        $countSafeReportsWithRemovedOneUnsafeItem++;
+        $countSafeReportsWithRemovedOneUnsafeLevel++;
     }
 }
 //----- Main functionality
@@ -51,7 +51,7 @@ echo sprintf(
 );
 echo sprintf(
     'Count Safe Reports with removed one unsafe level: %d. %s',
-    $countSafeReports + $countSafeReportsWithRemovedOneUnsafeItem,
+    $countSafeReports + $countSafeReportsWithRemovedOneUnsafeLevel,
     PHP_EOL
 );
 
@@ -59,5 +59,3 @@ $endTime = hrtime(true);
 echo sprintf('Time execution: %s ms %s', ($endTime - $startTime) / 1e6, PHP_EOL);
 echo sprintf('Memory Usage: %s', round(memory_get_usage() / 1024)), 'KB' . PHP_EOL;
 //----- Output
-
-

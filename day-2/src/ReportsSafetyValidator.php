@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Advent\Day2;
 
-class ReportsSafetyValidator
+readonly class ReportsSafetyValidator
 {
     /**
      * @param ItemsSafetyIdentifier $itemsSafetyIdentifier
      */
     public function __construct(
-        private readonly ItemsSafetyIdentifier $itemsSafetyIdentifier
+        private ItemsSafetyIdentifier $itemsSafetyIdentifier
     ) {
     }
 
@@ -51,11 +51,9 @@ class ReportsSafetyValidator
     private function getReportWithoutUnsafeLevel(array $reportLevels, int $levelToRemove): array
     {
         return array_values(
-            array_filter($reportLevels, function ($item, $key) use ($levelToRemove) {
-                return (int)$key !== (int)$levelToRemove;
+            array_filter($reportLevels, static function ($item, $key) use ($levelToRemove) {
+                return (int)$key !== $levelToRemove;
             }, ARRAY_FILTER_USE_BOTH)
         );
     }
-
-
 }

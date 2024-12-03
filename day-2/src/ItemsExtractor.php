@@ -9,7 +9,7 @@ use Generator;
 
 class ItemsExtractor
 {
-    public const DELIMETER_FOR_ITEMS = ' ';
+    public const string DELIMETER_FOR_ITEMS = ' ';
 
     /**
      * @param InputDataLinesExtractor $dataLinesExtractor
@@ -19,6 +19,9 @@ class ItemsExtractor
     ) {
     }
 
+    /**
+     * @return Generator
+     */
     public function getItems(): Generator
     {
         $inputDataLines = $this->dataLinesExtractor->getInputDataLines();

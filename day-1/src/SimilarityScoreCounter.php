@@ -3,12 +3,15 @@
 declare(strict_types=1);
 
 namespace Advent\Day1;
+
+use function array_key_exists;
+
 class SimilarityScoreCounter
 {
     /**
      * @var array
      */
-    private $countRepeatsForValues = [];
+    private array $countRepeatsForValues = [];
 
     /**
      * @param array $locationsIdsGroupd1
@@ -27,6 +30,10 @@ class SimilarityScoreCounter
         return $similarityScore;
     }
 
+    /**
+     * @param array $locationsIdsGroupd2
+     * @return void
+     */
     private function calculateCountRepeatsForValues(array $locationsIdsGroupd2): void
     {
         foreach ($locationsIdsGroupd2 as $locationId) {
@@ -39,6 +46,10 @@ class SimilarityScoreCounter
         }
     }
 
+    /**
+     * @param int $value
+     * @return int
+     */
     private function getCountOfRepeats(int $value): int
     {
         return $this->countRepeatsForValues[$value] ?? 0;

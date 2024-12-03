@@ -13,6 +13,9 @@ class FileInputGetter implements InputGetterInterface
      */
     private Filesystem $filesystem;
 
+    /**
+     * @param string $filePath
+     */
     public function __construct(private readonly string $filePath)
     {
         $this->filesystem = new Filesystem();

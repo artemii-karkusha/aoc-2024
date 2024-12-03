@@ -6,8 +6,11 @@ namespace ArtemiiKarkusha\Aoc2024;
 
 class InputDataLinesExtractor
 {
-    public const DELIMETER_FOR_LINES = "\n";
+    public const string DELIMETER_FOR_LINES = "\n";
 
+    /**
+     * @param InputGetterInterface $inputGetter
+     */
     public function __construct(
         private readonly InputGetterInterface $inputGetter
     ) {

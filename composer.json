@@ -22,11 +22,10 @@
             "cd day-1 && composer install",
             "cd day-2 && composer install"
         ],
-        "execute-day-1": [
-            "php day-1/src/app.php"
-        ],
-        "execute-day-2": [
-            "php day-2/src/app.php"
-        ]
+        "execute-day-1": "php day-1/src/solution.php",
+        "execute-day-2": "php day-2/src/solution.php"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "*"
     }
 }

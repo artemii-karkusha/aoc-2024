@@ -8,12 +8,12 @@ use ArtemiiKarkusha\Aoc2024\ValuesDiffCalculator;
 
 class ItemsSafetyIdentifier
 {
-    private const MIN_DIFF_VALUE = 1;
-    private const MAX_DIFF_VALUE = 3;
+    private const int MIN_DIFF_VALUE = 1;
+    private const int MAX_DIFF_VALUE = 3;
 
-    private const VALUES_ORDER_TYPE_INCREASED = 'increased';
+    private const string VALUES_ORDER_TYPE_INCREASED = 'increased';
 
-    private const VALUES_ORDER_TYPE_DECSREASED = 'decreased';
+    private const string VALUES_ORDER_TYPE_DECSREASED = 'decreased';
 
     private array $lastUnsafeItemKeys = [];
 
@@ -148,5 +148,4 @@ class ItemsSafetyIdentifier
 
         return false;
     }
-
 }
