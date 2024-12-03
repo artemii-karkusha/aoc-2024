@@ -36,11 +36,7 @@ foreach ($mulsExtractor->getEnabledMuls() as $mul) {
     $resultOfTheMultiplicationsForEnabledCode += $mulsMultiplier->getMultipliedResult($mul);
 }
 
-
 //----- Main functionality
-
-
-$mulsExtractor->getEnabledMuls();
 
 // Output
 echo sprintf(
@@ -58,5 +54,3 @@ $endTime = hrtime(true);
 echo sprintf('Time execution: %s ms %s', ($endTime - $startTime) / 1e6, PHP_EOL);
 echo sprintf('Memory Usage: %s', round(memory_get_usage() / 1024)), 'KB' . PHP_EOL;
 //----- Output
-
-

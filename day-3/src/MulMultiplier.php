@@ -6,7 +6,7 @@ namespace Advent\Day3;
 
 class MulMultiplier
 {
-    private const string EXPRATION = "/(){1}\w+,{1}\w+/i";
+    private const string EXPRATION = "/(){1}\\w+,{1}\\w+/i";
 
     /**
      * @param string $mul

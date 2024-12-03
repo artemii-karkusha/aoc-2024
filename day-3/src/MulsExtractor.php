@@ -9,7 +9,7 @@ use Generator;
 
 class MulsExtractor
 {
-    private const string EXPRATION = "/(mul)(\(){1}\w+,{1}\w+(\))/i";
+    private const string EXPRATION = '/(mul)(\(){1}\w+,{1}\w+(\))/i';
 
     /**
      * @param InputDataLinesExtractor $dataLinesExtractor
@@ -51,10 +51,10 @@ class MulsExtractor
 
     /**
      * @param string $inputData
-     * @param $isExecutionCodeEnabled
+     * @param true $isExecutionCodeEnabled
      * @return string
      */
-    private function getEnabledExecutionCode(string $inputData, $isExecutionCodeEnabled = true): string
+    private function getEnabledExecutionCode(string $inputData, bool $isExecutionCodeEnabled = true): string
     {
         $enabledExecution = '';
         $declarationForDisabling = 'don\'t()';
