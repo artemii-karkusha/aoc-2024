@@ -1,0 +1,18 @@
+{
+    "name": "advent/day-3",
+    "require": {
+        "php": "^8.3"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Advent\\Day3\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Artemii Karkusha",
+            "email": "artemii.karkusha@gmail.com"
+        }
+    ]
+}

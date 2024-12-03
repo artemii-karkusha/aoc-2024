@@ -29,4 +29,12 @@ class InputDataLinesExtractor
     {
         return explode(self::DELIMETER_FOR_LINES, $this->inputGetter->getInputData());
     }
+
+    /**
+     * @return string
+     */
+    public function getInputData(): string
+    {
+        return $this->inputGetter->getInputData();
+    }
 }
