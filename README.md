@@ -49,9 +49,13 @@ Run the solution for a specific day using Composer scripts:
 
 [Task README](https://github.com/artemii-karkusha/aoc-2024/day-2/README.md)
 
-### Day 2
+### Day 3
 
 [Task README](https://github.com/artemii-karkusha/aoc-2024/day-3/README.md)
+
+### Day 4
+
+[Task README](https://github.com/artemii-karkusha/aoc-2024/day-4/README.md)
 
 
 ## Acknowledgments

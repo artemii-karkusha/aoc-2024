@@ -1,0 +1,17 @@
+{
+    "name": "advent/day-4",
+    "require": {
+        "php": "^8.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Advent\\Day4\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Artemii Karkusha",
+            "email": "artemii.karkusha@gmail.com"
+        }
+    ]
+}
